@@ -27,12 +27,12 @@ public class UserServiceTest {
     private UserRepository userrepository;
 
     @Test
-    public void testGetEmployeeById() {
+    public void testGetUserById() {
         // Arrange
         long userId = 1L;
-        User mockUser = new User(userId, "John Doe", "john.doe@example.com");
+        User mockUser = new User(userId, "Petter pan", "petter@example.com");
 
-        // Mock the behavior of the repository to return the mock employee
+        // Mock the behavior of the repository to return the mock User
         Mockito.when(userrepository.findById(userId)).thenReturn(Optional.of(mockUser));
 
         // Act
@@ -41,8 +41,8 @@ public class UserServiceTest {
         // Assert
         assertNotNull(result);
         assertEquals(userId, result.getId());
-        assertEquals("John Doe", result.getName());
-        assertEquals("john.doe@example.com", result.getEmail());
+        assertEquals("Petter pan", result.getName());
+        assertEquals("petter@example.com", result.getEmail());
     }
 
 
