@@ -1,6 +1,6 @@
 package com.example.Hiper_gw.controller;
 
-import com.example.Hiper_gw.model.User;
+import com.example.Hiper_gw.entity.User;
 import com.example.Hiper_gw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
