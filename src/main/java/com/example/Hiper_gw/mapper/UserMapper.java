@@ -1,7 +1,7 @@
 package com.example.Hiper_gw.mapper;
 
 import com.example.Hiper_gw.dtos.UserDto;
-import com.example.Hiper_gw.entity.User;
+import com.example.Hiper_gw.models.User;
 
 public class UserMapper {
     public static UserDto convertEntityToDto(User user) {

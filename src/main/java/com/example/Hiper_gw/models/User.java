@@ -1,4 +1,4 @@
-package com.example.Hiper_gw.model;
+package com.example.Hiper_gw.models;
 import jakarta.persistence.*;
 
 @Entity

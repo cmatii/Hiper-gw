@@ -1,6 +1,7 @@
 package com.example.Hiper_gw.service;
 
-import com.example.Hiper_gw.model.User;
+import com.example.Hiper_gw.dtos.UserDto;
+import com.example.Hiper_gw.models.User;
 import com.example.Hiper_gw.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,16 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public User createUser(User user){
-        return userRepository.save(user);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+
+
+    public UserDto createUser(UserDto userDto){
+        return new UserDto(userRepository.save(userDto.toUserEntity()));
     }
 
     public List<User> getAllUsers(){

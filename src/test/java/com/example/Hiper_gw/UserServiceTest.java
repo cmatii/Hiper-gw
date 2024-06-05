@@ -1,6 +1,6 @@
 package com.example.Hiper_gw;
 
-import com.example.Hiper_gw.model.User;
+import com.example.Hiper_gw.models.User;
 import com.example.Hiper_gw.repository.UserRepository;
 import com.example.Hiper_gw.service.UserService;
 import org.junit.jupiter.api.Test;

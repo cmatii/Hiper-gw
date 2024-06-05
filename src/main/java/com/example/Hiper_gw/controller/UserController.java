@@ -1,6 +1,7 @@
 package com.example.Hiper_gw.controller;
 
-import com.example.Hiper_gw.entity.User;
+import com.example.Hiper_gw.dtos.UserDto;
+import com.example.Hiper_gw.models.User;
 import com.example.Hiper_gw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public UserDto createUser(@RequestBody UserDto userDto){
+        return userService.createUser(userDto);
     }
 
     @GetMapping
