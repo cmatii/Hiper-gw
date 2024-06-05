@@ -11,25 +11,25 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    private final UserRepository userRepository;
+    
+    private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    public UserService(final UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
 
     public UserDto createUser(UserDto userDto){
         return new UserDto(userRepository.save(userDto.toUserEntity()));
     }
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers(){
+        return userRepository.findAll().stream().map(UserDto::new).toList();
     }
 
-    public User getUserById(Long id){
-        return userRepository.findById(id).orElse(null);
+    public UserDto getUserById(Long id){
+        return new UserDto(userRepository.findById(id).orElse(null));
     }
 
     public User updateUser(Long id, User user){
