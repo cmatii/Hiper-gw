@@ -1,18 +1,23 @@
 package com.example.Hiper_gw.service;
 
 import com.example.Hiper_gw.dtos.UserDto;
+import com.example.Hiper_gw.mapper.UserMapper;
 import com.example.Hiper_gw.models.User;
 import com.example.Hiper_gw.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     
     private UserRepository userRepository;
+
+    private UserMapper userMapper;
+
 
     @Autowired
     public UserService(final UserRepository userRepository) {
@@ -28,8 +33,14 @@ public class UserService {
         return userRepository.findAll().stream().map(UserDto::new).toList();
     }
 
-    public UserDto getUserById(Long id){
-        return new UserDto(userRepository.findById(id).orElse(null));
+
+    public UserDto getUserById(Long id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            return userMapper.convertEntityToDto(userOptional.get());
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 
     public User updateUser(Long id, User user){

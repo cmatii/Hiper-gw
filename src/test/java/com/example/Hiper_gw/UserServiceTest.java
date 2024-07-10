@@ -34,7 +34,7 @@ public class UserServiceTest {
     public void testGetUserById( ) {
         // GIVEN
         long userId = 1L;
-        User mockUser = new User(userId, "Petter pan", "petter@example.com");
+        User mockUser = new User(userId, "Petter pan", "petter@example.com","pass123");
 
             
         // Mock the behavior of the repository to return the mock User

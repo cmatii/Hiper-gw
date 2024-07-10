@@ -4,10 +4,13 @@ import com.example.Hiper_gw.dtos.UserDto;
 import com.example.Hiper_gw.models.User;
 import com.example.Hiper_gw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -24,8 +27,8 @@ public class UserController {
     public List<UserDto> getAllUsers(){
         return userService.getAllUsers();
     }
-
-    @GetMapping("/{id}")
+    
+    @GetMapping("/users/{id}")
     public UserDto getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }

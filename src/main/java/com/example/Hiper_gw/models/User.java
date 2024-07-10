@@ -1,26 +1,34 @@
 package com.example.Hiper_gw.models;
-import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import jakarta.persistence.*;
+import lombok.ToString;
+
+@CrossOrigin
 @Entity
 @Table(name="users")
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
+    private String password;
 
-    public User(Long id, String name, String email) {
+    public User(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
     public User() {
     }
 
     public Long getId() {
+        System.out.println("*************** User getService(): "+this.id+" ***************");
         return id;
     }
 
@@ -42,5 +50,19 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    @Override
+    public String toString() {
+        return "id: "+this.id+", email: "+this.email;
     }
 }
