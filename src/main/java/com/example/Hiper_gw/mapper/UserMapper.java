@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.Hiper_gw.dtos.UserDto;
 import com.example.Hiper_gw.models.User;
-@CrossOrigin
 
 public class UserMapper {
     public static UserDto convertEntityToDto(User user) {

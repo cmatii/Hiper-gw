@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import jakarta.persistence.*;
 import lombok.ToString;
 
-@CrossOrigin
 @Entity
 @Table(name="users")
 public class User implements UserDetails{

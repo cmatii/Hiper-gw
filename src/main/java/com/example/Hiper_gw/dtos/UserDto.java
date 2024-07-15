@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.example.Hiper_gw.models.User;
 
-@CrossOrigin
 
 public record UserDto(  Long id, String name, String email, String password) {
 

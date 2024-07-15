@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -22,6 +22,13 @@ public class UserController {
     @Autowired
     private UserService userService;
     private JwtService jwtService;
+
+
+    public UserController(JwtService jwtService, UserService userService) {
+        this.jwtService = jwtService;
+        this.userService = userService;
+    }
+    
 
     @PostMapping
     public UserDto createUser(@RequestBody UserDto userDto){
@@ -48,7 +55,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-     @PostMapping("/signup")
+    @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
         User registeredUser = userService.signup(registerUserDto);
 
@@ -57,12 +64,14 @@ public class UserController {
 
 
 
-@PostMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
+        System.out.println("Getting into this 1: ****");
         User authenticatedUser = userService.authenticate(loginUserDto);
-
+        System.out.println("Getting into this 2: ****");
         String jwtToken = jwtService.generateToken(authenticatedUser);
 
+        System.out.println("Getting into this 3: ****");
         LoginResponse loginResponse = new LoginResponse().setToken(jwtToken).setExpiresIn(jwtService.getExpirationTime());
 
         return ResponseEntity.ok(loginResponse);

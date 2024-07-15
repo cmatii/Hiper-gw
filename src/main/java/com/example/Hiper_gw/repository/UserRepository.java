@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.Hiper_gw.dtos.UserDto;
 import com.example.Hiper_gw.models.User;
 
-@CrossOrigin(
-  methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE },
-  maxAge = 3600)
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
