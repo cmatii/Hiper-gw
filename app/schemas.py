@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 class SongBacklogBase(BaseModel):
@@ -24,6 +25,8 @@ class BandCreate(BandBase):
 class Band(BandBase):
     id : int
     owner_id  : int
+    SongBacklog: Optional[SongBacklog] = None  # type: ignore # Relación uno a uno opcional
+
 
     class Config:
         orm_mode = True
